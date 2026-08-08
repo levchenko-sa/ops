@@ -1,0 +1,14 @@
+OPS CONTROL FIX6
+
+Распакуйте архив и загрузите ВСЁ содержимое поверх репозитория.
+
+После Commit проверьте в GitHub:
+- FIX6_MARKER.txt
+- android/build.gradle
+- android/settings.gradle
+- android/app/build.gradle
+
+Особенно важно: android/app/build.gradle должен открываться прямо в GitHub.
+Именно этот файл отсутствовал в последнем логе.
+
+Файлов android/*.gradle.kts и android/app/build.gradle.kts в fix6 уже нет.
