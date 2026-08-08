@@ -22,5 +22,9 @@ dependencies:
   share_plus: ^11.0.0
   pdf: ^3.11.3
 
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
 flutter:
   uses-material-design: true
