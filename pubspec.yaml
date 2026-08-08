@@ -1,7 +1,7 @@
 name: ops_control
 description: OPS Control integrated field prototype
 publish_to: "none"
-version: 9.5.6+4
+version: 9.5.6+5
 
 environment:
   sdk: ">=3.3.0 <4.0.0"

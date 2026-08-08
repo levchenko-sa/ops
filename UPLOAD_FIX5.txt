@@ -1,0 +1,14 @@
+OPS CONTROL FIX5 — БЫСТРАЯ ЗАМЕНА
+
+Распакуйте архив и загрузите ВСЁ содержимое в корень репозитория.
+
+Главная проверка перед запуском Actions:
+- FIX5_MARKER.txt есть в корне
+- android/build.gradle.kts существует
+- android/settings.gradle.kts существует
+- android/app/build.gradle.kts существует
+- android/app/src/main/AndroidManifest.xml содержит flutterEmbedding = 2
+- android/app/src/main/java/ru/opscontrol/app/MainActivity.java существует
+
+Эта версия не требует, чтобы workflow выполнял tool/prepare_android.sh.
+Старый workflow с `flutter build apk --debug` должен увидеть полноценный Android v2 проект.
