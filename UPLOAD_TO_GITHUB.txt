@@ -1,22 +1,9 @@
-OPS CONTROL FIX3 — КАК ЗАМЕНИТЬ
+OPS CONTROL FIX4
 
-1. Распакуйте OPS_Control_v9_5_6_fix3_ROOT_CONTENTS.zip.
-2. Откройте распакованную папку.
-3. Выделите СОДЕРЖИМОЕ папки, а не саму папку:
-   .github
-   android
-   lib
-   test
-   tool
-   pubspec.yaml
-   FIX3_MARKER.txt
-   и остальные файлы.
-4. На GitHub в репозитории levchenko-sa/ops:
-   Add file -> Upload files.
-5. Перетащите выделенное содержимое.
-6. Commit directly to main.
-7. В корне GitHub должен появиться FIX3_MARKER.txt.
-8. Во вкладке Actions имя workflow должно быть:
-   OPS Control APK fix3
+Распакуйте ZIP и загрузите СОДЕРЖИМОЕ прямо в корень GitHub-репозитория.
 
-Если FIX3_MARKER.txt не виден в корне, файлы загружены не на тот уровень.
+После Commit проверьте:
+1) в корне есть FIX4_MARKER.txt
+2) Actions показывает workflow: OPS Control APK fix4
+
+Если оба признака есть — GitHub собирает именно fix4.
