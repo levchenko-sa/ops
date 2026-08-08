@@ -1,0 +1,14 @@
+OPS CONTROL FIX7 — KOTLIN 2.2.20
+
+Распакуйте ZIP и загрузите ВСЁ содержимое поверх репозитория.
+
+После Commit обязательно откройте GitHub:
+android/settings.gradle
+
+Там должна быть строка:
+id "org.jetbrains.kotlin.android" version "2.2.20" apply false
+
+Также в корне должен быть:
+FIX7_MARKER.txt
+
+Если это видно — новая Kotlin-конфигурация точно попала в main.
