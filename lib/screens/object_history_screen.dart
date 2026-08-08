@@ -68,6 +68,40 @@ class _ObjectHistoryScreenState extends State<ObjectHistoryScreen> {
         '${two(dt.hour)}:${two(dt.minute)}';
   }
 
+  Widget _historyCard(ObjectHistoryEntry entry) {
+    final cause = entry.cause?.trim();
+    final subtitle = [
+      _shortDate(entry.createdAt),
+      entry.status,
+      if (cause != null && cause.isNotEmpty)
+        'Причина: $cause',
+      if (entry.photoCount > 0)
+        'Фото на телефоне: ${entry.photoCount}',
+      if (entry.archivedPhotoCount > 0)
+        'Фото в архиве: ${entry.archivedPhotoCount}',
+    ].join('\n');
+
+    return Card(
+      child: ListTile(
+        leading: CircleAvatar(
+          child: Text('${entry.priority}'),
+        ),
+        title: Text(entry.type),
+        subtitle: Text(subtitle),
+        isThreeLine: true,
+        trailing: const Icon(Icons.chevron_right),
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => HistoryEntryScreen(
+              address: widget.object.address,
+              entry: entry,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -194,41 +228,9 @@ class _ObjectHistoryScreenState extends State<ObjectHistoryScreen> {
               }
 
               return Column(
-                children: items.map((entry) {
-                  final cause = entry.cause?.trim();
-                  final subtitle = [
-                    _shortDate(entry.createdAt),
-                    entry.status,
-                    if (cause != null && cause.isNotEmpty)
-                      'Причина: $cause',
-                    if (entry.photoCount > 0)
-                      'Фото на телефоне: ${entry.photoCount}',
-                    if (entry.archivedPhotoCount > 0)
-                      'Фото в архиве: ${entry.archivedPhotoCount}',
-                  ].join('\n');
-
-                  return Card(
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        child: Text('${entry.priority}'),
-                      ),
-                      title: Text(entry.type),
-                      subtitle: Text(subtitle),
-                      isThreeLine: true,
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => HistoryEntryScreen(
-                            address: widget.object.address,
-                            entry: entry,
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                }).toList()
-                  ..add(
-                    Padding(
+                children: <Widget>[
+                  for (final entry in items) _historyCard(entry),
+                  Padding(
                       padding: const EdgeInsets.only(top: 8),
                       child: OutlinedButton.icon(
                         onPressed: items.length < _historyLimit
@@ -247,7 +249,7 @@ class _ObjectHistoryScreenState extends State<ObjectHistoryScreen> {
                         ),
                       ),
                     ),
-                  ),
+                ],
               );
             },
           ),

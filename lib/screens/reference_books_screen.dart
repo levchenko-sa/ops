@@ -170,7 +170,7 @@ class _ReferenceBooksScreenState extends State<ReferenceBooksScreen> {
           Padding(
             padding: const EdgeInsets.all(16),
             child: DropdownButtonFormField<String>(
-              value: _category,
+              initialValue: _category,
               decoration: const InputDecoration(
                 labelText: 'Справочник',
                 prefixIcon: Icon(Icons.menu_book_outlined),

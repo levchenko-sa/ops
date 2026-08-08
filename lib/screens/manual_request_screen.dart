@@ -180,7 +180,7 @@ class _ManualRequestScreenState extends State<ManualRequestScreen> {
 
               return DropdownButtonFormField<String>(
                 isExpanded: true,
-                value: values.any((e) => e.value == _type)
+                initialValue: values.any((e) => e.value == _type)
                     ? _type
                     : null,
                 decoration: const InputDecoration(

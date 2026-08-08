@@ -327,7 +327,7 @@ class _GoodsReceiptScreenState extends State<GoodsReceiptScreen> {
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
               children: [
                 DropdownButtonFormField<int?>(
-                  value: _purchase?.id,
+                  initialValue: _purchase?.id,
                   isExpanded: true,
                   decoration: const InputDecoration(
                     labelText: 'Заявка на закупку',
@@ -383,7 +383,7 @@ class _GoodsReceiptScreenState extends State<GoodsReceiptScreen> {
                 ),
                 const SizedBox(height: 8),
                 DropdownButtonFormField<String>(
-                  value: _supplierDocType,
+                  initialValue: _supplierDocType,
                   decoration: const InputDecoration(
                     labelText: 'Вид документа',
                   ),

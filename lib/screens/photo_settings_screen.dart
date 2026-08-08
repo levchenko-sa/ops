@@ -60,15 +60,21 @@ class _PhotoSettingsScreenState extends State<PhotoSettingsScreen> {
     final selected = _dimension == dimension && _quality == quality;
 
     return Card(
-      child: RadioListTile<String>(
-        value: '$dimension-$quality',
-        groupValue: '$_dimension-$_quality',
-        onChanged: (_) => _apply(dimension, quality),
-        title: Text(title),
-        subtitle: Text(subtitle),
-        secondary: selected
-            ? const Icon(Icons.check_circle)
-            : const Icon(Icons.photo_outlined),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(14),
+        onTap: () => _apply(dimension, quality),
+        child: ListTile(
+          leading: Icon(
+            selected
+                ? Icons.radio_button_checked
+                : Icons.radio_button_off,
+          ),
+          title: Text(title),
+          subtitle: Text(subtitle),
+          trailing: selected
+              ? const Icon(Icons.check_circle)
+              : const Icon(Icons.photo_outlined),
+        ),
       ),
     );
   }

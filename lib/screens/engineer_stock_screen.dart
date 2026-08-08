@@ -47,12 +47,6 @@ class _EngineerStockScreenState extends State<EngineerStockScreen> {
     setState(() => _defaultEngineerId = next);
   }
 
-  String _fmt(double value) {
-    return value == value.roundToDouble()
-        ? value.toStringAsFixed(0)
-        : value.toStringAsFixed(2);
-  }
-
   Future<void> _addEngineer() async {
     final name = TextEditingController();
     final vehicle = TextEditingController();

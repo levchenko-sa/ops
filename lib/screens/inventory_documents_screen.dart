@@ -47,47 +47,6 @@ class _InventoryDocumentsScreenState
     if (mounted) setState(_reload);
   }
 
-  Future<bool> _profileReady() async {
-    final profile = await _repo.getOrganizationProfile();
-
-    if (profile.hasMinimumLegalDetails) return true;
-
-    if (!mounted) return false;
-
-    final goSettings = await showDialog<bool>(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text('Заполните реквизиты'),
-            content: const Text(
-              'До формирования учетных документов рекомендуется '
-              'указать организацию, руководителя и приказ, которым '
-              'утверждены применяемые формы первичных документов.',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context, false),
-                child: const Text('Позже'),
-              ),
-              FilledButton(
-                onPressed: () => Navigator.pop(context, true),
-                child: const Text('Открыть настройки'),
-              ),
-            ],
-          ),
-        ) ??
-        false;
-
-    if (goSettings && mounted) {
-      await Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (_) => const OrganizationSettingsScreen(),
-        ),
-      );
-    }
-
-    return false;
-  }
-
   Future<void> _purchaseRequest() async {
     setState(() => _busy = true);
 

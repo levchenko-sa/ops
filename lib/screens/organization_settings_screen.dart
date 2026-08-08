@@ -205,7 +205,7 @@ class _OrganizationSettingsScreenState
           ),
           const SizedBox(height: 8),
           DropdownButtonFormField<String>(
-            value: _regime,
+            initialValue: _regime,
             decoration: const InputDecoration(
               labelText: 'Режим закупок',
               prefixIcon: Icon(Icons.gavel_outlined),

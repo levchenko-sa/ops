@@ -101,7 +101,7 @@ class _ObjectEditScreenState extends State<ObjectEditScreen> {
           ),
           const SizedBox(height: 10),
           DropdownButtonFormField<String>(
-            value: ['SIM', 'Ethernet', 'SIM + Ethernet']
+            initialValue: ['SIM', 'Ethernet', 'SIM + Ethernet']
                     .contains(_connection.text)
                 ? _connection.text
                 : null,
@@ -126,7 +126,7 @@ class _ObjectEditScreenState extends State<ObjectEditScreen> {
           ),
           const SizedBox(height: 10),
           DropdownButtonFormField<String>(
-            value: ['Норма', 'Внимание', 'Авария'].contains(_status.text)
+            initialValue: ['Норма', 'Внимание', 'Авария'].contains(_status.text)
                 ? _status.text
                 : null,
             decoration: const InputDecoration(
