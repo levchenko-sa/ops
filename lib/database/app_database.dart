@@ -23,7 +23,9 @@ class AppDatabase {
       version: AppConstants.databaseVersion,
       onConfigure: (db) async {
         await db.execute('PRAGMA foreign_keys = ON');
-        await db.execute('PRAGMA busy_timeout = 5000');
+        // Android SQLite treats busy_timeout as a query-style PRAGMA.
+        // rawQuery executes it correctly; execute() throws SQLITE_OK/code 0.
+        await db.rawQuery('PRAGMA busy_timeout = 5000');
         await db.execute('PRAGMA temp_store = MEMORY');
         // Отрицательное значение cache_size задаётся в KiB:
         // около 4 МБ RAM на SQLite-кэш.
